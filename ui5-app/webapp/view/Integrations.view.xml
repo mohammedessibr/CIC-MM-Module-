@@ -1,0 +1,38 @@
+<mvc:View
+    controllerName="cic.mm.controller.Integrations"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    displayBlock="true">
+    <Page title="MM Module Integrations" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <f:GridList
+                    id="gridList"
+                    headerText="Cross-Functional Integration Points"
+                    items="{path: '/Integrations'}">
+                    <f:customLayout>
+                        <grid:GridBoxLayout boxWidth="20rem" />
+                    </f:customLayout>
+                    <f:GridListItem>
+                        <VBox class="sapUiSmallMargin">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                <Title text="{module}" level="H3" />
+                                <core:Icon xmlns:core="sap.ui.core" src="sap-icon://connected" color="Default" />
+                            </HBox>
+                            <Text text="{name}" fontStyle="Italic" class="sapUiTinyMarginBottom" />
+                            <Text text="{desc}" class="sapUiSmallMarginBottom" />
+                            <VBox items="{points}">
+                                <HBox class="sapUiTinyMarginTop">
+                                    <core:Icon xmlns:core="sap.ui.core" src="sap-icon://accept" color="Positive" size="0.75rem" class="sapUiTinyMarginEnd" />
+                                    <Text text="{}" />
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </f:GridListItem>
+                </f:GridList>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

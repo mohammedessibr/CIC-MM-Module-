@@ -1,0 +1,16 @@
+<mvc:View
+    controllerName="cic.mm.controller.ComingSoon"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Feature Coming Soon">
+        <content>
+            <VBox alignItems="Center" justifyContent="Center" class="sapUiLargeMargin">
+                <core:Icon xmlns:core="sap.ui.core" src="sap-icon://fiori-toolbox" size="4rem" color="Default" class="sapUiMediumMarginBottom"/>
+                <Title text="Section Under Migration" titleStyle="H2" />
+                <Text text="This section of the SAP Learning Module is currently being translated into the Fiori UI5 experience. Check back soon!" 
+                      textAlign="Center" class="sapUiSmallMarginTop" width="300px"/>
+                <Button text="Return to Intro" press=".onReturn" type="Emphasized" class="sapUiMediumMarginTop"/>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

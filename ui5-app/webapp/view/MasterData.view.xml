@@ -1,0 +1,43 @@
+<mvc:View
+    controllerName="cic.mm.controller.MasterData"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="MM Master Data" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <IconTabBar select="onFilterSelect">
+                    <items>
+                        <IconTabFilter text="Material Master" icon="sap-icon://product" key="material">
+                            <VBox class="sapUiSmallMargin">
+                                <Title text="Material Master (MM01/02/03)" level="H3" class="sapUiSmallMarginBottom" />
+                                <Text text="Contains all information on materials a company procures, produces, and sells." />
+                                <List class="sapUiSmallMarginTop">
+                                    <StandardListItem title="Basic Data" description="Global data like weights, units." />
+                                    <StandardListItem title="Purchasing" description="Tax data, order units." />
+                                    <StandardListItem title="Accounting" description="Price control (S/V), Valuation class." />
+                                </List>
+                            </VBox>
+                        </IconTabFilter>
+                        <IconTabFilter text="Vendor Master" icon="sap-icon://customer-and-supplier" key="vendor">
+                            <VBox class="sapUiSmallMargin">
+                                <Title text="Vendor Master / Business Partner (BP)" level="H3" class="sapUiSmallMarginBottom" />
+                                <List>
+                                    <StandardListItem title="General Data" description="Address, bank info." />
+                                    <StandardListItem title="Company Code Data" description="Reconciliation account." />
+                                    <StandardListItem title="Purchasing Data" description="Currency, schemas." />
+                                </List>
+                            </VBox>
+                        </IconTabFilter>
+                        <IconTabFilter text="Info Record" icon="sap-icon://hint" key="infoRecord">
+                            <VBox class="sapUiSmallMargin">
+                                <Title text="Purchasing Info Record (ME11)" level="H3" />
+                                <Text text="Stores vendor-material specific prices and conditions." />
+                            </VBox>
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

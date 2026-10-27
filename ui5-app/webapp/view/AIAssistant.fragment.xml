@@ -1,0 +1,96 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Dialog title="SAP MM AI Assistant" contentWidth="420px" contentHeight="560px" resizable="true" draggable="true" showHeader="false">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon src="sap-icon://sys-help-2" class="sapUiTinyMarginBegin"/>
+                    <Title text="SAP MM AI Assistant" />
+                </contentLeft>
+                <contentRight>
+                    <Button icon="sap-icon://decline" press=".closeChatBot" type="Transparent"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <ScrollContainer height="380px" vertical="true" horizontal="false" id="chatScrollContainer">
+                    <List items="{data>/chat/messages}" showSeparators="None">
+                        <CustomListItem>
+                            <VBox class="sapUiTinyMargin" alignItems="{= ${data>role} === 'user' ? 'End' : 'Start' }">
+                                <!-- Standard Message Bubble -->
+                                <VBox class="{= ${data>role} === 'user' ? 'userMessageBubble' : 'botMessageBubble' }">
+                                    <Text text="{data>content}" />
+                                </VBox>
+
+                                <!-- Interactive Cards -->
+                                
+                                <!-- Suggested PO Card -->
+                                <VBox visible="{= ${data>cardType} === 'execute_form' }" class="sapUiSmallMarginTop chatCard">
+                                    <Title text="{data>responseParams/executeData/title}" level="H4" titleStyle="H5" />
+                                    <VBox class="sapUiTinyMarginTop">
+                                        <items>
+                                            <core:Fragment fragmentName="cic.mm.view.CardFields" type="XML" />
+                                        </items>
+                                    </VBox>
+                                    <Button text="Submit Purchase Order" type="Emphasized" press=".handleCardAction" app:action="submit_po" class="sapUiTinyMarginTop" width="100%" />
+                                </VBox>
+
+                                <!-- Missing Data Card -->
+                                <VBox visible="{= ${data>cardType} === 'missing_data' }" class="sapUiSmallMarginTop chatCard missingDataCard">
+                                    <Title text="Missing Information" level="H4" titleStyle="H5" />
+                                    <List items="{data>responseParams/missingFields}" showSeparators="None">
+                                        <StandardListItem title="{data>}" icon="sap-icon://status-error" />
+                                    </List>
+                                </VBox>
+
+                                <!-- Alternative Vendors Card -->
+                                <VBox visible="{= ${data>cardType} === 'alternative_vendors' }" class="sapUiSmallMarginTop chatCard">
+                                    <Title text="Approved Vendors" level="H4" titleStyle="H5" />
+                                    <List items="{data>responseParams/suggestedVendors}" showSeparators="Inner">
+                                        <CustomListItem>
+                                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMargin">
+                                                <Text text="{data>}" />
+                                                <Button text="Select" type="Transparent" press=".handleCardAction" app:action="select_vendor" />
+                                            </HBox>
+                                        </CustomListItem>
+                                    </List>
+                                </VBox>
+
+                                <!-- Analysis Card -->
+                                <VBox visible="{= ${data>cardType} === 'analysis' }" class="sapUiSmallMarginTop chatCard">
+                                    <Title text="{data>responseParams/analysisData/title}" level="H4" titleStyle="H5" />
+                                    <Table items="{data>responseParams/analysisData/table}" class="sapUiTinyMarginTop">
+                                        <columns>
+                                            <Column><Text text="Vendor" /></Column>
+                                            <Column hAlign="End"><Text text="Rating" /></Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Text text="{data>vendor}" />
+                                                    <ObjectStatus text="{data>rating}" state="Success" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </VBox>
+
+                                <Button text="{data>link/label}" press=".onChatLinkPress" visible="{= !!${data>link} }" class="sapUiTinyMarginTop" type="Accept"/>
+                            </VBox>
+                        </CustomListItem>
+                    </List>
+                </ScrollContainer>
+            </VBox>
+            <HBox class="sapUiTinyMargin" wrap="Wrap" items="{data>/chat/keywords}" visible="{= ${data>/chat/messages}.length === 1 }">
+                <Button text="{data>}" press=".onChatKeywordPress" type="Transparent" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" />
+            </HBox>
+            <HBox class="sapUiTinyMargin sapUiTinyMarginTop" alignItems="Center">
+                <Input value="{data>/chat/input}" submit=".onChatSend" width="100%" placeholder="Ask about SAP MM..." enabled="{= !${data>/chat/isBusy}}" id="chatInput" />
+                <Button icon="sap-icon://paper-plane" press=".onChatSend" type="Emphasized" enabled="{= !${data>/chat/isBusy}}" class="sapUiTinyMarginBegin" />
+            </HBox>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

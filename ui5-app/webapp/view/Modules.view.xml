@@ -1,0 +1,36 @@
+<mvc:View
+    controllerName="cic.mm.controller.Modules"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="SAP MM Modules Overview" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel headerText="Sub-Modules of Materials Management">
+                    <List>
+                        <StandardListItem 
+                            title="Purchasing (MM-PUR)" 
+                            description="Handles the procurement of external materials and services." 
+                            icon="sap-icon://cart" />
+                        <StandardListItem 
+                            title="Inventory Management (MM-IM)" 
+                            description="Manages stock quantities and values within the warehouse." 
+                            icon="sap-icon://BusinessSuiteInAppSymbols/inventory" />
+                        <StandardListItem 
+                            title="Inventory Valuation (MM-IV)" 
+                            description="Calculates the value of inventory based on price control." 
+                            icon="sap-icon://money-bills" />
+                        <StandardListItem 
+                            title="Invoice Verification (MM-LIV)" 
+                            description="Verifies vendor invoices against POs and GRs." 
+                            icon="sap-icon://accidental-leave" />
+                        <StandardListItem 
+                            title="Master Data" 
+                            description="Core data for materials, vendors, and services." 
+                            icon="sap-icon://database" />
+                    </List>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

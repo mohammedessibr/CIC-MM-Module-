@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="cic.mm.controller.Quiz"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="Knowledge Check" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel headerText="SAP MM Interview Questions">
+                    <List items="{path: '/KnowledgeCheck'}" id="quizList">
+                        <CustomListItem>
+                            <Panel expandable="true" expanded="false" headerText="{q}">
+                                <Text text="{a}" class="sapUiSmallMargin" />
+                            </Panel>
+                        </CustomListItem>
+                    </List>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

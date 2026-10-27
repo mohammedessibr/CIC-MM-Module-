@@ -1,0 +1,49 @@
+<mvc:View
+    controllerName="cic.mm.controller.Movement"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="Movement Types (Mvt)" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel 
+                    headerText="About Movement Types" 
+                    expandable="true" 
+                    expanded="false" 
+                    class="sapUiSmallMarginBottom">
+                    <Text text="Movement types are 3-digit keys used in SAP to differentiate between various inventory transactions. They determine which G/L accounts are updated and how the stock overview is modified." />
+                </Panel>
+
+                <List
+                    items="{path: '/MovementTypes'}"
+                    headerText="Comprehensive Movement Catalog">
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMargin">
+                            <Toolbar style="Clear">
+                                <Title text="{category}" level="H3" />
+                            </Toolbar>
+                            <Table items="{movements}" borderDesign="None">
+                                <columns>
+                                    <Column width="80px">
+                                        <Text text="Mvt" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Description" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            <ObjectNumber number="{code}" state="Success" />
+                                            <Text text="{desc}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

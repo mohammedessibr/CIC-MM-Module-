@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="cic.mm.controller.PhysicalInventory"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="Physical Inventory" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel headerText="The PI Process Steps">
+                    <List items="{path: 'data>/PhysicalInventorySteps'}">
+                         <!-- Note: I will add this array to data.json shortly -->
+                         <StandardListItem 
+                            title="{data>label}" 
+                            description="{data>desc}" 
+                            info="{data>code}"
+                            icon="sap-icon://checklist" />
+                    </List>
+                </Panel>
+                
+                <Panel headerText="PI Transaction Codes" class="sapUiMediumMarginTop">
+                    <Table>
+                        <columns>
+                            <Column><Text text="T-Code"/></Column>
+                            <Column><Text text="Action"/></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="MI01"/>
+                                    <Text text="Create PI Document"/>
+                                </cells>
+                            </ColumnListItem>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="MI04"/>
+                                    <Text text="Enter Physical Count"/>
+                                </cells>
+                            </ColumnListItem>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="MI07"/>
+                                    <Text text="Post Inventory Differences"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

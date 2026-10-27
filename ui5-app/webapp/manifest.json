@@ -1,0 +1,163 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "cic.mm",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "info": "CIC MM Module"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://education",
+            "favIcon": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "cic.mm.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.120.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.tnt": {}
+            }
+        },
+        "contentDensity": {
+            "compact": true,
+            "cozy": true
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "cic.mm.i18n.i18n",
+                    "supportedLocales": ["en", ""],
+                    "fallbackLocale": "en"
+                }
+            },
+            "data": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/data.json"
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "cic.mm.view",
+                "controlAggregation": "pages",
+                "controlId": "appContainer",
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "root",
+                    "target": "intro"
+                },
+                {
+                    "pattern": "intro",
+                    "name": "intro",
+                    "target": "intro"
+                },
+                { "pattern": "modules", "name": "modules", "target": "modules" },
+                { "pattern": "org_structure", "name": "org_structure", "target": "orgStructure" },
+                { "pattern": "p2p", "name": "p2p", "target": "p2p" },
+                { "pattern": "master_data", "name": "master_data", "target": "masterData" },
+                { "pattern": "agreements", "name": "agreements", "target": "agreements" },
+                { "pattern": "movement", "name": "movement", "target": "movement" },
+                { "pattern": "physical_inv", "name": "physical_inv", "target": "physicalInventory" },
+                { "pattern": "t_codes", "name": "t_codes", "target": "tCodes" },
+                { "pattern": "integrations", "name": "integrations", "target": "integrations" },
+                { "pattern": "configuration", "name": "configuration", "target": "configuration" },
+                { "pattern": "quiz", "name": "quiz", "target": "quiz" }
+            ],
+            "targets": {
+                "intro": {
+                    "viewId": "intro",
+                    "viewName": "Intro"
+                },
+                "modules": {
+                    "viewId": "modules",
+                    "viewName": "Modules"
+                },
+                "orgStructure": {
+                    "viewId": "orgStructure",
+                    "viewName": "OrgStructure"
+                },
+                "p2p": {
+                    "viewId": "p2p",
+                    "viewName": "P2P"
+                },
+                "masterData": {
+                    "viewId": "masterData",
+                    "viewName": "MasterData"
+                },
+                "agreements": {
+                    "viewId": "agreements",
+                    "viewName": "Agreements"
+                },
+                "movement": {
+                    "viewId": "movement",
+                    "viewName": "Movement"
+                },
+                "physicalInventory": {
+                    "viewId": "physicalInventory",
+                    "viewName": "PhysicalInventory"
+                },
+                "tCodes": {
+                    "viewId": "tCodes",
+                    "viewName": "TCodes"
+                },
+                "integrations": {
+                    "viewId": "integrations",
+                    "viewName": "Integrations"
+                },
+                "configuration": {
+                    "viewId": "configuration",
+                    "viewName": "Configuration"
+                },
+                "quiz": {
+                    "viewId": "quiz",
+                    "viewName": "Quiz"
+                },
+                "comingSoon": {
+                    "viewId": "comingSoon",
+                    "viewName": "ComingSoon"
+                },
+                "notFound": {
+                    "viewId": "notFound",
+                    "viewName": "NotFound"
+                }
+            }
+        }
+    }
+}

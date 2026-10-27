@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="cic.mm.controller.Intro"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Welcome to SAP MM">
+        <content>
+            <Panel headerText="Systems, Applications, and Products" class="sapUiResponsiveMargin">
+                <Text text="The world’s leading ERP system. It helps companies manage and integrate all their business processes in one centralized platform." />
+            </Panel>
+            
+            <Panel headerText="Core Behaviors" class="sapUiResponsiveMargin" width="auto">
+                <List>
+                    <StandardListItem title="Centralized Data" description="All data stored in one system." icon="sap-icon://database" />
+                    <StandardListItem title="Efficiency" description="Automation reduces manual work." icon="sap-icon://energy-saving-lightbulb" />
+                    <StandardListItem title="Real-Time Reporting" description="Live data for faster decisions." icon="sap-icon://bar-chart" />
+                    <StandardListItem title="Scalability" description="Grows from small business to global enterprise." icon="sap-icon://globe" />
+                </List>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

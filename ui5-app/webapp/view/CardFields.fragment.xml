@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <VBox items="{data>responseParams/executeData/fields}">
+        <HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+            <Text text="{data>label}" class="sapUiTinyMarginEnd" />
+            <Text text="{data>value}" fontDesign="Bold" />
+        </HBox>
+    </VBox>
+</core:FragmentDefinition>

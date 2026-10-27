@@ -1,0 +1,70 @@
+<mvc:View
+    controllerName="cic.mm.controller.OrgStructure"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="Organizational Structure" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin" alignItems="Center">
+                <Panel width="100%" headerText="Hierarchy Overview">
+                    <VBox alignItems="Center" class="sapUiLargeMarginTop">
+                        <!-- Client -->
+                        <GenericTag text="Client" status="Error" class="sapUiMediumMarginBottom">
+                            <ObjectNumber number="100" unit="Global" state="Error" />
+                        </GenericTag>
+                        
+                        <tnt:NavigationList width="2px" class="orgLine" xmlns:tnt="sap.tnt" />
+
+                        <!-- Company Code -->
+                        <GenericTag text="Company Code" status="Warning" class="sapUiMediumMarginBottom">
+                            <ObjectNumber number="1000" unit="Legal Entity" state="Warning" />
+                        </GenericTag>
+
+                        <tnt:NavigationList width="2px" class="orgLine" xmlns:tnt="sap.tnt" />
+
+                        <!-- Plant -->
+                        <HBox justifyContent="Center" width="100%">
+                            <VBox alignItems="Center" class="sapUiMediumMarginEnd">
+                                <GenericTag text="Plant" status="Success">
+                                    <ObjectNumber number="1010" unit="Factory" state="Success" />
+                                </GenericTag>
+                                <Text text="Cairo" class="sapUiTinyMarginTop" />
+                            </VBox>
+                            <VBox alignItems="Center">
+                                <GenericTag text="Plant" status="Success">
+                                    <ObjectNumber number="2020" unit="Warehouse" state="Success" />
+                                </GenericTag>
+                                <Text text="Alexandria" class="sapUiTinyMarginTop" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </Panel>
+
+                <Panel headerText="Organizational Units Explained" class="sapUiMediumMarginTop">
+                    <List>
+                        <StandardListItem 
+                            title="Client" 
+                            description="Highest level. Shared master data (Global)." 
+                            icon="sap-icon://dimension" />
+                        <StandardListItem 
+                            title="Company Code" 
+                            description="Legal accounting entity (FI integration)." 
+                            icon="sap-icon://company-view" />
+                        <StandardListItem 
+                            title="Plant" 
+                            description="Physical location. Central for MM/IM." 
+                            icon="sap-icon://factory" />
+                        <StandardListItem 
+                            title="Storage Location" 
+                            description="Subdivision of a plant for stock management." 
+                            icon="sap-icon://BusinessSuiteInAppSymbols/inventory" />
+                        <StandardListItem 
+                            title="Purchasing Org / Group" 
+                            description="Units responsible for negotiating terms and buying." 
+                            icon="sap-icon://batch-payments" />
+                    </List>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

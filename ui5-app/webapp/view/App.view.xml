@@ -1,0 +1,35 @@
+<mvc:View
+    controllerName="cic.mm.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    displayBlock="true">
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton"
+                        icon="sap-icon://menu2"
+                        type="Transparent"
+                        press=".onSideNavButtonPress" />
+                <Title text="{i18n>appTitle}" />
+                <ToolbarSpacer />
+                <Button icon="sap-icon://sys-help" type="Transparent" press=".openChatBot" tooltip="AI Assistant"/>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation expanded="true" itemSelect=".onItemSelect" selectedKey="intro">
+                <tnt:NavigationList items="{data>/Navigation}">
+                    <tnt:NavigationListItem text="{data>label}" icon="{data>icon}" key="{data>id}" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <App id="appContainer" />
+        </tnt:mainContents>
+    </tnt:ToolPage>
+    <Button icon="sap-icon://comment" 
+            press=".openChatBot" 
+            type="Emphasized" 
+            class="floatingChatBubble shadowPulse" 
+            tooltip="Chat with Assistant" />
+</mvc:View>

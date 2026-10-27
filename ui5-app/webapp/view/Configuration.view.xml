@@ -1,0 +1,44 @@
+<mvc:View
+    controllerName="cic.mm.controller.Configuration"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="SAP MM Configuration (SPRO)" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel 
+                    headerText="Implementation Guide (IMG)" 
+                    class="sapUiSmallMarginBottom">
+                    <VBox>
+                        <Text text="SAP customization happens in the Reference IMG. Access it via T-Code: SPRO" class="sapUiTinyMarginBottom" />
+                        <MessageStrip 
+                            text="Caution: Configuration changes affect the entire system. Always test in Development/Quality clients first." 
+                            type="Warning" 
+                            showIcon="true" />
+                    </VBox>
+                </Panel>
+
+                <List items="{path: '/Configuration'}" headerText="Key Configuration Tracks">
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMargin">
+                            <Title text="{title}" level="H3" />
+                            <VBox items="{items}">
+                                <VBox class="sapUiSmallMarginTop sapUiMediumMarginBegin">
+                                    <HBox justifyContent="SpaceBetween" alignItems="Center">
+                                        <Text text="{name}" fontStyle="Bold" />
+                                        <ObjectStatus text="{tcode}" state="Information" inverted="true" />
+                                    </HBox>
+                                    <Text text="{desc}" class="sapUiTinyMarginBottom" />
+                                    <HBox>
+                                        <Text text="Path: " fontStyle="Italic" class="sapUiTinyMarginEnd" />
+                                        <Text text="{path}" />
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

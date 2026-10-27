@@ -1,0 +1,28 @@
+<mvc:View
+    controllerName="cic.mm.controller.Agreements"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page title="Outline Agreements" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel headerText="Contracts (ME31K)" class="sapUiSmallMarginBottom">
+                    <VBox>
+                        <Text text="A contract is a long-term agreement with a vendor for the supply of materials or the performance of services." />
+                        <List class="sapUiSmallMarginTop">
+                            <StandardListItem title="Quantity Contract (MK)" description="Total quantity of materials to be ordered." />
+                            <StandardListItem title="Value Contract (WK)" description="Total value of materials/services to be ordered." />
+                        </List>
+                    </VBox>
+                </Panel>
+
+                <Panel headerText="Scheduling Agreements (ME31L)">
+                    <VBox>
+                        <Text text="A scheduling agreement involves a fixed delivery schedule with specific quantities and dates." />
+                        <Text text="Release Order: Not required (Delivery schedules are used instead)." class="sapUiSmallMarginTop" />
+                    </VBox>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

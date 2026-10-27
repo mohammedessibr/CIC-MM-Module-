@@ -1,0 +1,47 @@
+<mvc:View
+    controllerName="cic.mm.controller.P2P"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    displayBlock="true">
+    <Page title="Procure-to-Pay (P2P) Flow" backgroundDesign="List">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Panel headerText="Standard Procurement Cycle" class="sapUiSmallMarginBottom">
+                    <Text text="The P2P cycle describes the process of acquiring materials and services, from the initial requirement to the final payment settlement." />
+                </Panel>
+
+                <List items="{path: '/P2PSteps'}" class="p2pTimeline">
+                    <CustomListItem>
+                        <VBox class="sapUiMediumMarginTop sapUiMediumMarginBottom sapUiLargeMarginBegin">
+                            <HBox alignItems="Center" class="sapUiSmallMarginBottom">
+                                <Title text="{title}" level="H2" class="sapUiSmallMarginEnd" />
+                                <ObjectStatus text="Active Step" state="Warning" inverted="true" />
+                            </HBox>
+                            <Text text="{desc}" class="sapUiSmallMarginBottom" />
+                            
+                            <VBox class="sapUiSmallMarginTop">
+                                <Title text="Related T-Codes" level="H4" titleStyle="H4" class="sapUiTinyMarginBottom" />
+                                <HBox items="{tcodes}">
+                                    <ObjectStatus text="{}" state="Information" class="sapUiTinyMarginEnd" inverted="false" />
+                                </HBox>
+                            </VBox>
+
+                            <Panel expandable="true" expanded="false" headerText="Step Details" class="sapUiSmallMarginTop">
+                                <VBox binding="{details}">
+                                    <Text text="Purpose: {purpose}" class="sapUiTinyMarginBottom" />
+                                    <VBox visible="{= !!${internal} }">
+                                         <Text text="Internal Status: {internal}" />
+                                    </VBox>
+                                    <VBox visible="{= !!${match} }">
+                                         <Text text="Verification Logic: {match}" />
+                                    </VBox>
+                                </VBox>
+                            </Panel>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

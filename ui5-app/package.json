@@ -1,0 +1,12 @@
+{
+  "name": "ui5-app",
+  "version": "1.0.0",
+  "description": "SAP Fiori UI5 Migration",
+  "main": "index.js",
+  "scripts": {
+    "start": "ui5 serve -o index.html"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^3.0.0"
+  }
+}

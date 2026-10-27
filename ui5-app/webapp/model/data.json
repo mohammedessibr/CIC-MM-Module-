@@ -1,0 +1,192 @@
+{
+  "Navigation": [
+    { "id": "intro", "label": "Introduction", "icon": "sap-icon://home" },
+    { "id": "modules", "label": "MM Modules", "icon": "sap-icon://grid" },
+    { "id": "org_structure", "label": "Org Structure", "icon": "sap-icon://org-chart" },
+    { "id": "p2p", "label": "Procure to Pay", "icon": "sap-icon://process" },
+    { "id": "master_data", "label": "Master Data", "icon": "sap-icon://database" },
+    { "id": "agreements", "label": "Outline Agreements", "icon": "sap-icon://customer-and-supplier" },
+    { "id": "movement", "label": "Movement Types", "icon": "sap-icon://shipping-status" },
+    { "id": "physical_inv", "label": "Physical Inventory", "icon": "sap-icon://business-objects-experience" },
+    { "id": "t_codes", "label": "T-Code Master", "icon": "sap-icon://measure" },
+    { "id": "integrations", "label": "Integrations", "icon": "sap-icon://connected" },
+    { "id": "configuration", "label": "MM Configuration", "icon": "sap-icon://settings" },
+    { "id": "quiz", "label": "Knowledge Check", "icon": "sap-icon://activities" }
+  ],
+  "MovementTypes": [
+    {
+      "category": "Goods Receipt (GR)",
+      "movements": [
+        { "code": "101", "desc": "Goods Receipt for Purchase Order" },
+        { "code": "102", "desc": "Reversal of Goods Receipt (101)" },
+        { "code": "103", "desc": "GR into GR Blocked Stock" },
+        { "code": "105", "desc": "Release from Blocked Stock" },
+        { "code": "122", "desc": "Return Delivery to Vendor" }
+      ]
+    },
+    {
+      "category": "Goods Issue (GI)",
+      "movements": [
+        { "code": "201", "desc": "Goods Issue for Cost Center" },
+        { "code": "251", "desc": "Goods Issue for Sales (without delivery)" },
+        { "code": "261", "desc": "Goods Issue for Order (Production)" },
+        { "code": "601", "desc": "Goods Issue for Delivery (Sales)" }
+      ]
+    },
+    {
+      "category": "Stock Transfers",
+      "movements": [
+        { "code": "301", "desc": "Transfer Plant to Plant (1-Step)" },
+        { "code": "303", "desc": "Transfer Plant to Plant (Remove from Storage)" },
+        { "code": "305", "desc": "Transfer Plant to Plant (Place in Storage)" },
+        { "code": "311", "desc": "Transfer SLoc to SLoc (1-Step)" }
+      ]
+    }
+  ],
+  "TCodes": [
+    {
+      "category": "Purchasing",
+      "subcategories": [
+        {
+          "name": "Purchase Requisition",
+          "codes": [
+            { "code": "ME51N", "desc": "Create Purchase Requisition" },
+            { "code": "ME52N", "desc": "Change Purchase Requisition" },
+            { "code": "ME53N", "desc": "Display Purchase Requisition" }
+          ]
+        },
+        {
+          "name": "Purchase Order",
+          "codes": [
+            { "code": "ME21N", "desc": "Create Purchase Order" },
+            { "code": "ME22N", "desc": "Change Purchase Order" },
+            { "code": "ME23N", "desc": "Display Purchase Order" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Inventory Management",
+      "codes": [
+        { "code": "MIGO", "desc": "Goods Movements" },
+        { "code": "MB51", "desc": "Material Document List" },
+        { "code": "MMBE", "desc": "Stock Overview" }
+      ]
+    }
+  ],
+  "P2PSteps": [
+    {
+      "id": "step1",
+      "title": "Requirement Identification",
+      "desc": "The procurement process starts when a business unit identifies a need for materials or services.",
+      "tcodes": ["ME51N", "ME52N", "ME53N"],
+      "details": {
+        "purpose": "Inform purchasing dept of material/service requirements",
+        "internal": "Internal document, not sent to vendors",
+        "types": [
+          { "type": "NB", "label": "Standard PR" },
+          { "type": "L", "label": "Subcontracting" },
+          { "type": "K", "label": "Consignment" }
+        ]
+      }
+    },
+    {
+      "id": "step2",
+      "title": "Sourcing",
+      "desc": "Identifying potential vendors and selecting the best source of supply.",
+      "tcodes": ["ME41", "ME47", "ME49"],
+      "details": {
+        "purpose": "Evaluate vendors based on price, quality, and delivery",
+        "methods": ["RFQ", "Quotation Maintenance", "Price Comparison"]
+      }
+    },
+    {
+      "id": "step3",
+      "title": "Purchase Order",
+      "desc": "A legally binding document sent to a vendor to buy materials/services.",
+      "tcodes": ["ME21N", "ME22N", "ME23N"],
+      "details": {
+        "purpose": "External legal commitment",
+        "types": ["Standard", "Blanket", "Release Order"]
+      }
+    },
+    {
+      "id": "step4",
+      "title": "Goods Receipt",
+      "desc": "Recording the physical arrival of goods from the vendor.",
+      "tcodes": ["MIGO"],
+      "details": {
+        "purpose": "Updates stock levels and valuation",
+        "mvt": "101 (Standard GR)"
+      }
+    },
+    {
+      "id": "step5",
+      "title": "Invoice Verification",
+      "desc": "Verifying the vendor's invoice against the PO and GR.",
+      "tcodes": ["MIRO"],
+      "details": {
+        "purpose": "Ensures 3-way matching before payment",
+        "match": "PO + GR + Invoice"
+      }
+    }
+  ],
+  "Integrations": [
+    {
+      "module": "MM-FI",
+      "name": "Financial Accounting",
+      "desc": "Integration at Goods Receipt and Invoice Verification stages.",
+      "points": ["Automatic Account Determination", "GR/IR Clearing", "Vendor Liability"]
+    },
+    {
+      "module": "MM-SD",
+      "name": "Sales & Distribution",
+      "desc": "Availability check and stock reduction for sales orders.",
+      "points": ["Stock Transport Orders", "Third-party Processing", "Consignment"]
+    }
+  ],
+  "Configuration": [
+    {
+      "id": "enterprise",
+      "title": "Enterprise Structure",
+      "items": [
+        { "name": "Define Company Code", "tcode": "OX02", "path": "Enterprise Structure > Definition > Financial Accounting" },
+        { "name": "Define Plant", "tcode": "OX10", "path": "Enterprise Structure > Definition > Logistics - General" }
+      ]
+    }
+  ],
+  "ChatBot": {
+    "welcomeMessage": "Hello! I am your SAP MM Assistant. How can I help you today?",
+    "keywords": [
+      { "trigger": "p2p", "response": "The Procure-to-Pay process involves PR, PO, GR, and Invoice Verification.", "link": "P2P" },
+      { "trigger": "migo", "response": "MIGO is used for Goods Movements like Goods Receipt (101) and Goods Issue (201).", "link": "MOVEMENT" },
+      { "trigger": "tcode", "response": "You can find all transaction codes in our T-Code Master list.", "link": "T_CODES" }
+    ]
+  },
+  "PhysicalInventorySteps": [
+    { "code": "MI01", "label": "Create PI Document", "desc": "Initiates count for specific materials." },
+    { "code": "MI04", "label": "Enter Count Results", "desc": "Physical count findings entered into SAP." },
+    { "code": "MI07", "label": "Post Differences", "desc": "Adjusts system stock to match count." }
+  ],
+  "KnowledgeCheck": [
+    { "q": "What is SAP MM?", "a": "Materials Management module for procurement and inventory." },
+    { "q": "What is 3-Way Matching?", "a": "Comparing Purchase Order, Goods Receipt, and Invoice." },
+    { "q": "What is MIGO?", "a": "Primary transaction for Goods Movements." }
+  ],
+  "chat": {
+    "messages": [
+      {
+        "role": "assistant",
+        "content": "Hello! I am your SAP MM Assistant. How can I help you today?"
+      }
+    ],
+    "keywords": [
+      "Vendor Evaluation",
+      "P2P Process",
+      "CDS Views",
+      "T-Codes"
+    ],
+    "input": "",
+    "isBusy": false
+  }
+}

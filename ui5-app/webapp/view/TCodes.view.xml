@@ -1,0 +1,71 @@
+<mvc:View
+    controllerName="cic.mm.controller.TCodes"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    displayBlock="true">
+    <Page title="T-Code Master List" backgroundDesign="List">
+        <headerContent>
+            <SearchField 
+                id="tCodeSearch"
+                placeholder="Search T-Codes or Descriptions..."
+                width="300px"
+                liveChange=".onSearch" />
+        </headerContent>
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <List
+                    id="tCodeList"
+                    items="{path: '/TCodes'}"
+                    headerText="SAP MM Transaction Database">
+                    <CustomListItem>
+                        <VBox class="sapUiSmallMargin">
+                            <Title text="{category}" level="H3" titleStyle="H3" class="sapUiSmallMarginBottom" />
+                            <Table items="{codes}" borderDesign="None" class="sapUiNoContentPadding">
+                                <columns>
+                                    <Column width="120px">
+                                        <Text text="T-Code" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Description" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                            <ObjectStatus text="{code}" state="Information" class="sapUiTinyMarginBottom" inverted="true" />
+                                            <Text text="{desc}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <VBox items="{subcategories}">
+                                <VBox class="sapUiMediumMarginBegin sapUiSmallMarginTop">
+                                    <Title text="{name}" level="H4" titleStyle="H4" class="sapUiTinyMarginBottom" />
+                                    <Table items="{codes}" borderDesign="None">
+                                        <columns>
+                                            <Column width="120px">
+                                                <Text text="T-Code" />
+                                            </Column>
+                                            <Column>
+                                                <Text text="Description" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem vAlign="Middle">
+                                                <cells>
+                                                    <ObjectStatus text="{code}" state="Information" inverted="true" />
+                                                    <Text text="{desc}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </VBox>
+                            </VBox>
+                        </VBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
